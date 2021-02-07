@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 
 //Search component for account name
 function Search(props) {
+    //The name being typed
     const [name, setName] = useState('');
 
     const handleNameUpdate = (text) => {
         setName(text);
     };
 
+    //Calls back the passed function from App.js to return account information of searched user
+    //GET function called for user 'account' data
     async function getSearch (){
 
         let adata = await fetch(`/account?username=${name}`)

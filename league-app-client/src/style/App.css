@@ -37,13 +37,9 @@
   }
 }
 
-.Match-Box-Container{
-  position: relative;
-  margin: 0 auto;
-  width: 700px;
+.All-Players-Container{
+  width: 380px;
   height: 125px;
-  border: solid white;
-  border-width: 1px;
 }
 
 .Champion-Head-Image{
@@ -51,13 +47,13 @@
   height: 50px; 
 }
 
-.Summoner-Spell-Image{
-  width: 25px;
-  height: 25px;
-}
-
 .Image-Container{
   border: solid white;
+}
+
+.Item-Container{
+  width: 400px;
+  height: 125px;
 }
 
 .Little-Square{
@@ -68,4 +64,38 @@
   background-color: grey;
   border: solid black;
   border-width: 1px;
+}
+
+.Match-Box-Container{
+  position: relative;
+  margin: 0 auto;
+  width: 1150px;
+  height: 120px;
+  border: solid white;
+  border-width: 1px;
+}
+
+.Summoner-Light-Detail{
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+
+.Summoner-Spell-Image{
+  width: 25px;
+  height: 25px;
+}
+
+.Teammate-Champion-Head-Image{
+  width: 20px;
+  height: 20px;
+}
+
+.Team-Container{
+  width: 190px;
+  height: 120;
+}
+
+.User-Match-Stat-Container{
+  width: 290px;
+  height: 125px;
 }

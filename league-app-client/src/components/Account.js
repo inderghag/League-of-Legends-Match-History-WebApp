@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import MatchDetails from './MatchDetails';
 
+//Gets user match history by using passed in account data and displays match history
 function Account(props){
+    //The complete match history of user
     const [matchData, setMatchData] = useState();
+    //Passed down account data
     const adata = props.accountData;
 
+    //Loads the matchData variable on load
+    //GET function for all match data
     useEffect(() => {
         if(!adata.isLoading)
         {
@@ -19,6 +24,7 @@ function Account(props){
         }
     }, [adata]);
 
+    //Passes match individually to components to be worked on
     if(matchData)
     {
         return(

@@ -1,7 +1,9 @@
 import React from 'react';
 import ItemSet from './Items'
-import Players from './Players'
+import Teams from './Teams'
+import ChampIcon from './ChampionIcon'
 
+//Displays the individual match history containers with data
 function MatchDetails(props) {
     const matchDetails = props.match;
     const championFile = require('../static_data/championList.json');
@@ -33,17 +35,6 @@ function MatchDetails(props) {
         
     }
 
-    //Returns the searched champion head sprite for display
-    //Param:ChampionId
-    function getChampionSquareImageURL(championId){
-        for(let champion in championFile.data){
-            if(championFile.data[`${champion}`].key === championId)
-            {
-                return `http://ddragon.leagueoflegends.com/cdn/11.2.1/img/champion/${championFile.data[`${champion}`].image.full}`;
-            }
-        }
-    }
-
     function getSummonerSpellImageURL(spellId){
         for(let spell in summonerSpellFile.data){
             if(summonerSpellFile.data[`${spell}`].key === spellId)
@@ -52,16 +43,14 @@ function MatchDetails(props) {
             }
         }
     }
-    
+
     return (
         <div >
             <div className="Match-Box-Container row">
-                <div className="col-sm-3">
-                    <img src={getChampionSquareImageURL(`${searchedUser.championId}`)} 
-                        alt={searchedUser.championId}
-                        className="Champion-Head-Image"
-                    />
-                    <div className="cols-sm-1">
+                <div className="col-md-3 User-Match-Stat-Container">
+                    <ChampIcon championId={searchedUser.championId} applyClass="Champion-Head-Image"/>
+                    
+                    <div className="cols-md-1">
                         <img src={getSummonerSpellImageURL(`${searchedUser.spell1Id}`)}
                             alt={searchedUser.spell1Id}
                             className="Summoner-Spell-Image"
@@ -72,11 +61,11 @@ function MatchDetails(props) {
                         />
                     </div>
                 </div>
-                <div className="col-sm-4 Image-Container">
+                <div className="col-md-5 Item-Container Image-Container">
                     <ItemSet stats={searchedUser.stats}/>
                 </div>
-                <div className="col-sm-5">
-                    <Players redTeam={redTeam} blueTeam={blueTeam}/>
+                <div className="col-md-4 All-Players-Container">
+                    <Teams redTeam={redTeam} blueTeam={blueTeam}/>
                 </div>
             </div>
         </div>
