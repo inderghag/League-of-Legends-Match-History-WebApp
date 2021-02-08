@@ -48,12 +48,12 @@
 }
 
 .Image-Container{
-  border: solid white;
+  border: solid black;
 }
 
 .Item-Container{
   width: 400px;
-  height: 125px;
+  height: 120px;
 }
 
 .Little-Square{
@@ -67,15 +67,24 @@
 }
 
 .Match-Box-Container{
+  color: black;
   position: relative;
   margin: 0 auto;
   width: 1150px;
   height: 120px;
-  border: solid white;
+  border: solid black;
   border-width: 1px;
 }
 
+.Match-Loss{
+  background-color:#ffb8a3;
+}
+.Match-Win{
+  background-color:#b5e0ff;
+}
 .Summoner-Light-Detail{
+  text-align: left;
+  height: 22px;
   overflow:hidden;
   text-overflow: ellipsis;
 }
@@ -92,7 +101,7 @@
 
 .Team-Container{
   width: 190px;
-  height: 120;
+  height: 110;
 }
 
 .User-Match-Stat-Container{

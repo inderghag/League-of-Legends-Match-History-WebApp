@@ -9,8 +9,8 @@ function Teams(props) {
     function displayPlayer(player) {
         return (
             <div className="Summoner-Light-Detail">
-                {player.summonerName}
                 <ChampIcon championId={player.championId} applyClass="Teammate-Champion-Head-Image"/>
+                {player.summonerName}
             </div>
         );
     }
