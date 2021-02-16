@@ -12,7 +12,6 @@ function App() {
   //Manages the callback with the intial search of the username
   function handleSearchCallback(data) {
     setAccountData({isLoading: false, ...data});
-    console.log(accountData);
   }
   
   return (

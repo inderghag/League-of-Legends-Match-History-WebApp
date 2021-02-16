@@ -8,7 +8,7 @@ function Teams(props) {
 
     function displayPlayer(player) {
         return (
-            <div className="Summoner-Light-Detail">
+            <div className="Summoner-Light-Detail" key={player.summonerName}>
                 <ChampIcon championId={player.championId} applyClass="Teammate-Champion-Head-Image"/>
                 {player.summonerName}
             </div>
@@ -17,12 +17,12 @@ function Teams(props) {
 
     return (
         <div className="row">
-            <div className="col-md-6 Team-Container">
+            <div className="col-6 Team-Container">
                 {blueTeam.map(player => {
                     return displayPlayer(player);
                 })}
             </div>
-            <div className="col-md-6 Team-Container">
+            <div className="col-6 Team-Container">
                 {redTeam.map(player => {
                     return displayPlayer(player);
                 })}
