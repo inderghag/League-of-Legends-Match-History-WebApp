@@ -37,6 +37,14 @@
   }
 }
 
+.Account-Stat-Container{
+  width: 600px;
+  height: 200px;
+  border: solid black;
+  background-color: lightgray;
+  margin: 0 auto;
+}
+
 .All-Players-Container{
   width: 380px;
   height: 125px;
@@ -47,13 +55,10 @@
   height: 50px; 
 }
 
-.Image-Container{
-  border: solid black;
-}
-
 .Item-Container{
   width: 480px;
   height: 120px;
+  border: solid black;
 }
 
 .Little-Square{
@@ -79,9 +84,15 @@
 .Match-Loss{
   background-color:#ffb8a3;
 }
+
 .Match-Win{
   background-color:#b5e0ff;
 }
+
+.Pie-Win-Loss{
+  float:left;
+}
+
 .Summoner-Light-Detail{
   text-align: left;
   height: 22px;

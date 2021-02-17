@@ -7,7 +7,7 @@ function AccountDetail(props) {
     //The complete match history of user
     const matchData = props.matchHistory;
     //Used to track whether games were a win or loss and send to WinLoss element
-    const [winLossRate, setWinLoss] = useState({win: 0, loss: 0});
+    const [winLossRate, setWinLoss] = useState();
     let win=0, loss=0;
     //Passed down account data
     const adata = props.user;
@@ -32,7 +32,9 @@ function AccountDetail(props) {
     //Passes match individually to components to be worked on
     return(
         <div>
-            <WinLoss win={winLossRate.win} loss={winLossRate.loss} />
+            <div className="Account-Stat-Container row">
+                <WinLoss className="cols-3" winLossRate={winLossRate} />
+            </div>
             {
                 matchData.map(match => {
                     return <MatchDetails match={match} username={adata.name} key={match.gameId} winLossCallback={winLossCallback} /> 

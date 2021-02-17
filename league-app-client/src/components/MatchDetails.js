@@ -72,7 +72,7 @@ function MatchDetails(props) {
 
                     </div>
                 </div>
-                <div className="col-5 Item-Container Image-Container">
+                <div className="col-5 Item-Container">
                     <ItemSet stats={searchedUser.stats}/>
                 </div>
                 <div className="col-4 All-Players-Container">
