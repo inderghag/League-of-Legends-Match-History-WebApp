@@ -33,7 +33,9 @@ function AccountDetail(props) {
     return(
         <div>
             <div className="Account-Stat-Container row">
-                <WinLoss className="cols-3" winLossRate={winLossRate} />
+                <WinLoss className="col-4" winLossRate={winLossRate} />
+                <p className="col-4">text1</p>
+                <p className="col-4">text2</p>
             </div>
             {
                 matchData.map(match => {

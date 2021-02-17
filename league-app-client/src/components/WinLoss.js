@@ -12,22 +12,32 @@ function WinLoss(props) {
                 'Loss'
             ],
             datasets: [{
-                data: [winLossRate.win, winLossRate.loss],
+                data: [
+                    winLossRate.win,
+                    winLossRate.loss
+                ],
                 backgroundColor: [
                     '#b5e0ff',
                     '#ffb8a3'
                 ],
             }],
         }
+
+        const option = {
+            legend: {
+                display: false,
+            },
+        }; 
     
         return (
-            <div>
+            <div className="Win-Loss-Container">
                 <Pie
                     data={data} 
-                    width={300}
-                    height={150}
-                    options={{maintainAspectRatio: false}}
+                    width={198}
+                    height={120}
+                    options={option}
                 />
+                <p style={{color:'black'}}>{winLossRate.win+winLossRate.loss} Games {winLossRate.win} Won {winLossRate.loss} Loss</p>
             </div>
         );
     }
