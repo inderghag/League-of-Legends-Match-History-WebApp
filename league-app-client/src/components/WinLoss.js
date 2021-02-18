@@ -6,6 +6,7 @@ function WinLoss(props) {
     let winLossRate = props.winLossRate;
     if(winLossRate !== undefined)
     {
+        let winPercent = ((winLossRate.win/(winLossRate.loss+winLossRate.win))*100).toFixed(0);
         const data = {
             labels: [
                 'Win',
@@ -37,7 +38,9 @@ function WinLoss(props) {
                     height={120}
                     options={option}
                 />
-                <p style={{color:'black'}}>{winLossRate.win+winLossRate.loss} Games {winLossRate.win} Won {winLossRate.loss} Loss</p>
+                
+                <p style={{color:'black'}}>{winPercent}% win rate<br />
+                    {winLossRate.win+winLossRate.loss} Games {winLossRate.win} Won {winLossRate.loss} Loss</p>
             </div>
         );
     }
