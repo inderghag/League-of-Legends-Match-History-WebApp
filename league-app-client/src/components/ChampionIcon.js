@@ -1,20 +1,14 @@
 import React from 'react';
+import {GetChampion} from '../common/GetChampion';
 
 //Returns the champion icons
 function ChampionIcon(props) {
-    const championFile = require('../static_data/championList.json');
 
-    //Gets the icon from the static file
-    //Static file champion id key is stored as key so the parameter id passed in also has
-    //to be a string value
+    //Gets champion data and returns image link
     function getChampIcon(champId)
     {
-        for(let champion in championFile.data){
-            if(championFile.data[`${champion}`].key === champId)
-            {
-                return `http://ddragon.leagueoflegends.com/cdn/11.2.1/img/champion/${championFile.data[`${champion}`].image.full}`;
-            }
-        }
+        let champion = GetChampion(champId);
+        return `http://ddragon.leagueoflegends.com/cdn/11.2.1/img/champion/${champion.image.full}`;
     }
 
     return(
