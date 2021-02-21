@@ -7,7 +7,7 @@ import SummonerIcon from './SummonerSpell'
 //Displays the individual match history containers with data
 function MatchDetails(props) {
     const matchDetails = props.match;
-    const handleWinLossCallback = props.winLossCallback;
+    const handleAccountCallback = props.accountCallback;
 
     //API stat data of the searched user within match
     let searchedUser = '';
@@ -23,8 +23,7 @@ function MatchDetails(props) {
             searchedUser = matchDetails.participants[i];
 
             //Checks to see if match was won or loss for searched user
-            if((searchedUser.teamId === 100 && matchDetails.teams[0].win === "Win")
-            || (searchedUser.teamId === 200 && matchDetails.teams[1].win === "Win"))
+            if(searchedUser.stats.win)
             {
                 winStatus = true;
             }
@@ -49,9 +48,16 @@ function MatchDetails(props) {
 
     //Returns whether match was win or loss back to AccountDetail(Parent) to keep track of ratio
     useEffect(() => {
-        if(handleWinLossCallback)
+        if(handleAccountCallback)
         {
-            handleWinLossCallback(winStatus);
+            let champStats = {
+                championId: searchedUser.championId,
+                kills: searchedUser.stats.kills,
+                deaths: searchedUser.stats.deaths,
+                assists: searchedUser.stats.assists,
+                win: winStatus
+            }
+            handleAccountCallback(champStats);
         }
     })
 
