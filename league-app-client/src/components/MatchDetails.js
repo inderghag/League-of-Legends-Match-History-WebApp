@@ -46,7 +46,7 @@ function MatchDetails(props) {
         
     }
 
-    //Returns whether match was win or loss back to AccountDetail(Parent) to keep track of ratio
+    //Returns whether match stats/details back to AccountDetail(Parent) to keep track of ratio
     useEffect(() => {
         if(handleAccountCallback)
         {
@@ -55,6 +55,8 @@ function MatchDetails(props) {
                 kills: searchedUser.stats.kills,
                 deaths: searchedUser.stats.deaths,
                 assists: searchedUser.stats.assists,
+                role: searchedUser.timeline.role,
+                lane: searchedUser.timeline.lane,
                 win: winStatus
             }
             handleAccountCallback(champStats);
