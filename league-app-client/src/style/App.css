@@ -42,7 +42,13 @@
   height: 200px;
   border: solid black;
   background-color: lightgray;
-  margin: 0 auto;
+  margin: auto;
+}
+
+.Account-Champion-Head-Image{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
 }
 
 .All-Players-Container{
@@ -89,6 +95,10 @@
   background-color:#b5e0ff;
 }
 
+.Remove-Padding{
+  padding: 0px;
+}
+
 .Summoner-Light-Detail{
   text-align: left;
   height: 22px;
@@ -114,9 +124,4 @@
 .User-Match-Stat-Container{
   width: 290px;
   height: 125px;
-}
-
-.Win-Loss-Container{
-  height: 168px;
-  margin: auto;
 }
