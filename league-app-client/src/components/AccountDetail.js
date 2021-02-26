@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import WinLoss from './WinLoss';
 import MatchDetails from './MatchDetails';
+import WinLoss from './WinLoss';
 import RecentChampions from './RecentChampions';
+import LaneStats from './LaneStats';
 
 //Provides the details for user account
 function AccountDetail(props) {
     //The complete match history of user
     const matchData = props.matchHistory;
+    const adata = props.user;
     //Used to track win/loss rate and champion stats across those games
-    const [accountStats, setAccountStats] = useState({winLoss: {}, champsPlayed: {}});
+    const [accountStats, setAccountStats] = useState({
+        winLoss: {}, 
+        champsPlayed: {}, 
+        laneStats: {}
+    });
     let win=0, loss=0;
     let champsPlayed = new Map();
+    let laneDetails = new Map();
     //Passed down account data
-    const adata = props.user;
 
     function accountCallback(data)
     {
@@ -44,6 +50,41 @@ function AccountDetail(props) {
             loss++;
         }
         
+        laneMatchAdd(data.lane, data.role, data.win);
+    }
+
+    /**
+     * Tracking lane stats
+     * @param {string} lane 
+     * @param {string} role
+     * @param {boolean} wl 
+     */    
+    function laneMatchAdd(lane, role, wl)
+    {
+        if(!(lane in laneDetails))
+        {
+            laneDetails[lane] = {};
+            let position = lane!=='BOTTOM' ? lane : (role === 'DUO_CARRY' ? 'ADC' : 'SUPPORT');
+            laneDetails[lane][role] = {
+                position: position,
+                won: 0,
+                games: 0,
+            }
+        }
+
+        if(!(role in laneDetails[lane]))
+        {
+            laneDetails[lane][role] = {
+                won: 0,
+                games: 0,
+            }
+        }
+
+        if(wl)
+        {
+            laneDetails[lane][role].won++;
+        }
+        laneDetails[lane][role].games++;
     }
 
     useEffect(() => {
@@ -52,18 +93,26 @@ function AccountDetail(props) {
                 win: win,
                 loss: loss,
             },
-            champsPlayed: champsPlayed
+            champsPlayed: champsPlayed,
+            laneStats: laneDetails,
         });
     }, [win, loss])
 
-    
-    //Passes match individually to components to be worked on
     return(
         <div>
-            <div className="Account-Stat-Container row">
-                <WinLoss className="col-4 Win-Loss-Container" winLossRate={accountStats.winLoss} />
-                <RecentChampions className="col-5" championsPlayed={accountStats.champsPlayed}/>
-                <p className="col-3 Recent-Position-Container">text2</p>
+            <div className="Account-Stat-Container row" style={{color:'black'}}>
+                <div className="col-4">
+                    <p>Win Rate</p>
+                    <WinLoss winLossRate={accountStats.winLoss} />
+                </div>
+                <div className="col-5 Remove-Padding">
+                    <p>Most Played Recent Champions</p>
+                    <RecentChampions championsPlayed={accountStats.champsPlayed} />
+                </div>
+                <div className="col-3 Remove-Padding">
+                    <p>Most Played Roles</p>
+                    <LaneStats  laneDetails={accountStats.laneStats} />
+                </div>
             </div>
             {
                 matchData.map(match => {
