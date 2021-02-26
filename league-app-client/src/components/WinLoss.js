@@ -31,7 +31,7 @@ function WinLoss(props) {
         }; 
     
         return (
-            <div className="Win-Loss-Container">
+            <div>
                 <Pie
                     data={data} 
                     width={198}
@@ -39,7 +39,7 @@ function WinLoss(props) {
                     options={option}
                 />
                 
-                <p style={{color:'black'}}>{winPercent}% win rate<br />
+                <p>{winPercent}% win rate<br />
                     {winLossRate.win+winLossRate.loss} Games {winLossRate.win} Won {winLossRate.loss} Loss</p>
             </div>
         );

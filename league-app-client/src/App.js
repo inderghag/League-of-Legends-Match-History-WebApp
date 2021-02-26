@@ -16,6 +16,7 @@ function App() {
   
   return (
     <div className="App">
+      <h1>League Account Stat Search</h1>
       <Search appCallback={handleSearchCallback}/>
 
       <Account accountData={accountData} />

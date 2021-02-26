@@ -24,7 +24,7 @@ function RecentChampions(props) {
 
         return(
             <div className="col">
-                <table style={{width:'100%',height: 194}}>
+                <table style={{width:'100%'}} className="table-hover">
                     <tbody>
                     {
                         orderedChampsList.slice(0,3).map(champion =>{
@@ -33,7 +33,7 @@ function RecentChampions(props) {
                                     <th>
                                         <ChampIcon championId={champion[0].championId} applyClass="Account-Champion-Head-Image"/>
                                     </th>
-                                    <td style={{fontSize:14}}>
+                                    <td style={{fontSize:14, paddingBottom:5}}>
                                         {champion[0].name}<br />
                                         {(champion[0].won/champion[0].games)*100}% ({champion[0].won}W {champion[0].loss}L)&nbsp;
                                         {champion[0].deaths === 0 ? `Perfect`: ((champion[0].kills + champion[0].assists)/champion[0].deaths).toFixed(2)} KDA

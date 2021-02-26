@@ -30,7 +30,6 @@ function Search(props) {
 
     return (
         <div>
-            <h1>League Account Stat Search</h1>
             <div>
                 Username: 
                 <input type='text' onChange={(text) => handleNameUpdate(text.target.value)}/>
